@@ -1,13 +1,25 @@
 .sendForm {
-
+    display: flex;
+    align-items: center;
 }
 
 .textarea {
-
+    width: 100%;
+    resize: none;
+    border-radius: 20px;
+    overflow: hidden;
+    padding: 20px;
+    margin-right: 40px;
+    background-color: #f3f3f3;
 }
 
 .button {
-
+    width: 100px;
+    height: 30px;
+    border: none;
+    border-radius: 20px;
+    background-color: #0968d7;
+    color: white;
 }
 
 .button:hover {
