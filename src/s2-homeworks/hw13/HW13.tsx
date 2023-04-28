@@ -47,7 +47,6 @@ const HW13 = () => {
                     setImage(error500)
                     setInfo(e.response.data.info)
                     setText(e.response.data.errorText)
-
                 }else if(e.response.status === 400) {
                     setCode(`Ошибка ${e.response.status}!`)
                     setImage(error400)
@@ -58,7 +57,6 @@ const HW13 = () => {
                     setImage(errorUnknown)
                     setInfo('AxiosError')
                     setText('Network Error')
-                    console.log(e)
                 }
 
             })
@@ -75,7 +73,7 @@ const HW13 = () => {
                         onClick={send(true)}
                         xType={'secondary'}
                         // дописать
-                        disabled={!code}
+                        disabled={info === '...loading'}
                     >
                         Send true
                     </SuperButton>
@@ -84,7 +82,7 @@ const HW13 = () => {
                         onClick={send(false)}
                         xType={'secondary'}
                         // дописать
-                        disabled={!code}
+                        disabled={info === '...loading'}
                     >
                         Send false
                     </SuperButton>
@@ -93,7 +91,7 @@ const HW13 = () => {
                         onClick={send(undefined)}
                         xType={'secondary'}
                         // дописать
-                        disabled={!code}
+                        disabled={info === '...loading'}
                     >
                         Send undefined
                     </SuperButton>
@@ -102,7 +100,7 @@ const HW13 = () => {
                         onClick={send(null)} // имитация запроса на не корректный адрес
                         xType={'secondary'}
                         // дописать
-                        disabled={!code}
+                        disabled={info === '...loading'}
                     >
                         Send null
                     </SuperButton>
