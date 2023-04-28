@@ -37,26 +37,28 @@ const HW13 = () => {
                 setCode('Код 200!')
                 setImage(success200)
                 setInfo('код 200 - обычно означает что скорее всего всё ок)')
-                setText('...всё ок)')
+                setText(res.data.errorText)
                 // дописать
-
+                console.log(res)
             })
             .catch((e) => {
                 if(e.response.status === 500) {
-                    setCode('Ошибка 500!')
+                    setCode(`Ошибка ${e.response.status}!`)
                     setImage(error500)
-                    setInfo('500 - обычно означает что что-то сломалось на сервере, например база данных)')
-                    setText('эмитация ошибки на сервере ошибка')
+                    setInfo(e.response.data.info)
+                    setText(e.response.data.errorText)
+
                 }else if(e.response.status === 400) {
-                    setCode('Ошибка 400!')
+                    setCode(`Ошибка ${e.response.status}!`)
                     setImage(error400)
-                    setInfo('вообще! ошибка 400 - обычно означает что скорее всего фронт отправил что-то не то на бэк!')
-                    setText('Ты не отправил success в body')
+                    setInfo(e.response.data.info)
+                    setText(e.response.data.errorText)
                 }else {
                     setCode('Error!')
                     setImage(errorUnknown)
                     setInfo('AxiosError')
                     setText('Network Error')
+                    console.log(e)
                 }
 
             })
